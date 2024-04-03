@@ -64,4 +64,8 @@ ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
 }
 
+navigateTochart(){
+  this.router.navigate(["/app-chart"]);
+}
+
 }
