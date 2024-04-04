@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 import { SharedServiceService } from '../services/shared-service.service';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule,MatPaginator,CommonModule,MatIcon],
+  imports: [MatTableModule, MatPaginatorModule,MatPaginator,CommonModule,MatIcon,MatSort],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -28,6 +29,8 @@ export class DashboardComponent implements AfterViewInit{
   constructor(private weatherService: WeatherService,private router: Router,private shared:SharedServiceService) { }
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
 
   ngAfterViewInit() {
     
@@ -57,6 +60,7 @@ if (this.data.hourly.time.length === this.data.hourly.temperature2m.length &&
     
     this.dataSource = new MatTableDataSource<PeriodicElement>(hourWeatherArray);
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort =this.sort 
 
     this.timeTemperatureData = hourWeatherArray.map(mydata => ({
       time: mydata.time,

@@ -4,20 +4,11 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { Router, RouterOutlet } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
-import {MatBadgeModule} from "@angular/material/badge"
 import {MatSidenavModule} from "@angular/material/sidenav"
-import {MatListModule} from "@angular/material/list"
-import {MatCardModule} from "@angular/material/card"
-import {MatSliderModule} from "@angular/material/slider"
+import {MatListModule, MatNavList} from "@angular/material/list"
 import {MatTableModule} from "@angular/material/table"
 import {MatPaginatorModule} from "@angular/material/paginator"
 import {MatSortModule} from "@angular/material/sort"
-import {MatDatepickerModule} from "@angular/material/datepicker"
-import {MatNativeDateModule} from "@angular/material/core"
-import {MatRadioModule} from "@angular/material/radio"
-import {MatCheckboxModule} from "@angular/material/checkbox"
-import {MatDialogModule} from "@angular/material/dialog"
-import {MatMenuModule} from "@angular/material/menu"
 
 @Component({
   selector: 'app-toolbar',
@@ -28,22 +19,12 @@ import {MatMenuModule} from "@angular/material/menu"
     MatIconModule, 
     MatSidenavModule, 
     MatListModule,
-    MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatBadgeModule,
     MatSidenavModule,
-    MatListModule,
-    MatCardModule,
-    MatSliderModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatRadioModule,
-    MatCheckboxModule,
-    MatDialogModule,
     RouterOutlet
   ],
   templateUrl: './toolbar.component.html',
@@ -64,8 +45,9 @@ ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
 }
 
-navigateTochart(){
-  this.router.navigate(["/app-chart"]);
+
+navigateToHeatIndexCalculator(){
+  this.router.navigate(["/app-heat-index"])
 }
 
 }

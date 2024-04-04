@@ -1,1 +1,33 @@
+<div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
+<form [formGroup]="heatIndexForm" (ngSubmit)="calculateHeatIndex()" style="display: flex; flex-direction: column; max-width: 300px;">
+  <h1>Heat Index Calculator</h1>
+  <mat-form-field style="padding-bottom: 20px;">
+    <mat-label for="temperature">Temperature</mat-label>
+    <input matInput type="number" id="temperature" formControlName="temperature"  required>
+    <mat-error *ngIf="heatIndexForm.get('temperature').hasError('required')">Temperature is required</mat-error>
+    <mat-error *ngIf="heatIndexForm.get('temperature').hasError('temperatureInvalid')">Heat Index cannot be calculated for temperatures less than 26.7°C or 80°F</mat-error>
+  </mat-form-field>
+  <mat-form-field style="padding-bottom: 20px;">
+    <mat-label for>Temperature Unit</mat-label>
+      <mat-select>
+        <mat-option value="Celsius">°C</mat-option>
+        <mat-option value="Fahrenheit">°F</mat-option>
+      </mat-select>
+      <mat-error *ngIf="heatIndexForm.get('temperatureUnit').hasError('required')">Temperature unit is required</mat-error>
+  </mat-form-field>
+  <mat-form-field style="padding-bottom: 20px;">
+      <mat-label for="relativeHumidity">Relative Humidity</mat-label>
+      <input matInput type="number" id="relativeHumidity" formControlName="relativeHumidity" required>
+      <mat-error *ngIf="heatIndexForm.get('relativeHumidity').hasError('required')">Relative humidity is required</mat-error>
+    <mat-error *ngIf="heatIndexForm.get('relativeHumidity').hasError('min') || heatIndexForm.get('relativeHumidity').hasError('max')">Relative humidity must be between 0 and 100</mat-error>
+  </mat-form-field>
+    <button mat-raised-button type="submit">Calculate Heat Index</button>
+</form>
+</div>
+<div *ngIf="heatIndexForm.valid">
+  <mat-form-field>
+    <mat-label>Heat Index</mat-label>
+    <input matInput type="text" value="{{ this.htIndex}}" readonly>
+  </mat-form-field>
+</div>
 

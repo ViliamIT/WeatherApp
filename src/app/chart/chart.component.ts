@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import Chart, { ChartConfiguration } from 'chart.js/auto';
-import { log } from 'console';
 import { SharedServiceService } from '../services/shared-service.service';
 
 @Component({
@@ -29,7 +28,6 @@ export class ChartComponent implements AfterViewInit,OnInit {
 
 
   ngAfterViewInit() {
-    //console.log(this.mydata.time);
     const labels: string[] = [];
 
     for (let i = 0; i < this.mydata.length; i++) {
@@ -41,7 +39,6 @@ export class ChartComponent implements AfterViewInit,OnInit {
 for (let i = 0; i < this.mydata.length; i++) {
   temperatures.push(this.mydata[i].temperature);
 }
-    //const labels = this.mydata.time
     const data = {
       labels: labels,
       datasets: [{
